@@ -1,0 +1,92 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Special use application",
+    "description": "A rough sketch of the POST JSON HTTP request for a special use permit from our ePermitting system the U.S. Forest Service",
+    "definitions": {
+      "applicant-info": {
+        "type": "object",
+        "properties": {
+      		"firstName": { "type": "string", "suds-application": "Contacts", "suds-field": "First Name"},
+      		"lastName": {	"type": "string", "suds-application": "Contact", "suds-field": "Last Name" },
+          "dayPhone": { "$ref": "#/definitions/phone-number" },
+          "eveningPhone": { "$ref": "#/definitions/phone-number" },
+          "emailAddress": { "type": "string", "suds-application": "Contact", "suds-field": "E-mail"},
+          "mailingAddress": { "type": "string", "suds-application": "Contact", "suds-field": "Address 1"},
+          "mailingAddress2": { "type": "string", "suds-application": "Contact", "suds-field": "Address 2"},
+          "mailingCity": { "type": "string", "suds-application": "Contact", "suds-field": "City"},
+          "mailingState": { "type": "string", "suds-application": "Contact", "suds-field": "State/Province" },
+          "mailingZIP": { "type": "integer", "suds-application": "Contact",  "suds-field": "Postal code" },
+      		"organizationName": {
+      			"description": "The name of the group, company, organization or event applying",
+      			"type": "integer",
+            "suds-application": "Contact",
+            "suds-field": "Contact Name"
+      		},
+          "website": { "type": "string", "suds-table": "Contact", "suds-field": "Remarks" },
+          "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }, "suds-table": "Contact Type", "suds-field": "Remarks" },
+        "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState","organizationName"]
+      },
+      "phoneNumber": {
+        "type": "object",
+        "properties": {
+          "internationalCode": { "type": "integer", "suds-application": "Contact", "suds-field": "International Code"},
+          "areaCode": { "type": "integer", "suds-application": "Contact", "suds-field": "Area Code"},
+          "number": { "type": "integer", "suds-application": "Contact", "suds-field": "Phone Number"},
+          "extension": { "type": "integer", "suds-application": "Contact", "suds-field": "Extension"},
+          "type": { "suds-application": "Contact", "suds-field": "Phone No. Type", "enum" : ["non-commercial","temp-outfitter-guide"]},
+        },
+        "required": ["areaCode","number","type"]
+      },
+      "location": {
+        "type": "object",
+        "properties": {
+          "latitude": { "type": "integer", "suds-application": "Contact", "suds-field": "International Code"},
+          "longitude": { "type": "integer", "suds-application": "Contact", "suds-field": "Area Code"},
+        },
+        "required": ["phoneAreaCode","phoneNumber","phoneType"]
+      },
+      "non-commercial-fields": {
+        "type": "object",
+        "properties": {
+      		"activityDescription": { "type": "string", "suds-application": "Application", "suds-field" : "Purpose"},
+      		"locationDescription": {	"type": "string", "suds-table": "application", "suds-field" : "purpose"},
+          "startDateTime": { "type": "dateTime", "suds-table": "application", "suds-field" : "remarks"},
+          "endDateTime": { "type": "dateTime", "suds-table": "application", "suds-field" : "remarks" },
+          "numberParticipants" : { "type": "integer",  "suds-field" : "remarks" }
+      		},
+      },
+      "temp-outfitter-fields": {
+        "type": "object",
+        "properties": {
+      		"insuranceCertificate": {	"type": "file" },
+          "goodStandingEvidence": {
+      			"description": "Certificate of good standing, operating agreement, or other evidence the business is in good standing",
+            "type": "file"
+          },
+          "operatingPlan": {
+      			"description": "A completed Word or RTF operating plan template.",
+            "type": "file"
+          },
+      	},
+        "required": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
+      },
+    },
+    "type": "object",
+    "properties": {
+      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"]},
+      "forest-code": { "$ref": "#/definitions/applicant-info", "suds-application": "Contact,Application", "suds-field" : "Admin org, Security Code" },
+      "district-code": { "$ref": "#/definitions/applicant-info", "suds-application": "Contact,Application", "suds-field" : "Admin org, Security Code"  },
+      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"]},
+      "locations": {
+        "manyOf": [
+          { "$ref": "#/definitions/location" }
+        ]
+      },
+      "type-specific-fields": {
+        "oneOf": [
+          { "$ref": "#/definitions/non-commercial-fields" },
+          { "$ref": "#/definitions/temp-outfitter-fields" },
+        ]
+      }
+    }
+}
