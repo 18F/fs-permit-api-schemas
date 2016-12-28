@@ -72,9 +72,13 @@
           "operatingPlan": {
       			"description": "A completed Word or RTF operating plan template.",
             "type": "file"
-          }
-      	},
-        "required": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
+          },
+          "pre-determined-suds-fields" : {
+            "!COMMENT" : "If the permit type is temporary outfitter/guide, these fields can be set in SUDS without any additional input from the API user.",
+            "crExempt" : { "type" : "string", "suds-application" : "Application", "suds-field" : "value", "yes"},
+            "code" : { "type" : "integer", "suds-application" : "Application", "suds-field" : "value", "153"}
+          },
+         "required": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
       },
     },
     "type": "object",
