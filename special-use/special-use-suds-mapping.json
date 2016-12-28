@@ -53,7 +53,13 @@
           "startDateTime": { "type": "dateTime", "suds-table": "application", "suds-field" : "remarks"},
           "endDateTime": { "type": "dateTime", "suds-table": "application", "suds-field" : "remarks" },
           "numberParticipants" : { "type": "integer",  "suds-field" : "remarks" }
-      		},
+          },
+        "pre-determined-suds-fields":
+        {
+          "!COMMENT" : "If the permit type is non-commercial, these fields can be set in SUDS without any additional input from the API user.",
+          "crExempt" : { "type" : "string", "suds-application" : "Application", "suds-field" : "value", "yes"},
+          "Code" : { "type" : "integer", "suds-application" : "Application", "suds-field" : "value", "191"}
+        }
       },
       "temp-outfitter-fields": {
         "type": "object",
@@ -66,7 +72,7 @@
           "operatingPlan": {
       			"description": "A completed Word or RTF operating plan template.",
             "type": "file"
-          },
+          }
       	},
         "required": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
       },
