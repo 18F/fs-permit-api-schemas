@@ -6,60 +6,51 @@
       "applicant-info": {
         "type": "object",
         "properties": {
-      		"firstName": { "type": "string", "suds-application": "Contacts", "suds-field": "First Name"},
-      		"lastName": {	"type": "string", "suds-application": "Contact", "suds-field": "Last Name" },
+      		"firstName": { "type": "string", "basic-api-field" : "FIRST_NAME"},
+      		"lastName": {	"type": "string", "basic-api-field" : "LAST_NAME" },
           "dayPhone": { "$ref": "#/definitions/phone-number" },
           "eveningPhone": { "$ref": "#/definitions/phone-number" },
-          "emailAddress": { "type": "string", "suds-application": "Contact", "suds-field": "E-mail"},
-          "mailingAddress": { "type": "string", "suds-application": "Contact", "suds-field": "Address 1"},
-          "mailingAddress2": { "type": "string", "suds-application": "Contact", "suds-field": "Address 2"},
-          "mailingCity": { "type": "string", "suds-application": "Contact", "suds-field": "City"},
-          "mailingState": { "type": "string", "suds-application": "Contact", "suds-field": "State/Province" },
-          "mailingZIP": { "type": "integer", "suds-application": "Contact",  "suds-field": "Postal code" },
+          "emailAddress": { "type": "string", "basic-api-field" : "EMAIL"},
+          "mailingAddress": { "type": "string", "basic-api-field" : "ADDRESS_1"},
+          "mailingAddress2": { "type": "string", "basic-api-field" : "ADDRESS_2"},
+          "mailingCity": { "type": "string", "basic-api-field" : "CITY_NAME"},
+          "mailingState": { "type": "string", "basic-api-field" : "STATE_CODE"},
+          "mailingZIP": { "type": "integer", "basic-api-field": "POSTAL_CODE"},
       		"organizationName": {
       			"description": "The name of the group, company, organization or event applying",
       			"type": "integer",
-            "suds-application": "Contact",
-            "suds-field": "Contact Name"
       		},
           "website": { "type": "string", "suds-table": "Contact", "suds-field": "Remarks" },
-          "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }, "suds-table": "Contact Type", "suds-field": "Remarks" },
-        "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState","organizationName"]
+          "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }, "basic-api-field" : "ORG_TYPE, ORG_CODE" },
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "COUNTRY_NAME", "value" : "United States of America"},
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CONT_NAME", "note" : "Should be either the organizationName or the first/last name"},
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CONTACT_TYPE", "note" : "If organizationName is filled, then should be ORGANIZATION. If not PERSON."},
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "ADDRESS_TYPE", "value" : "Main"},
+
+        "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState"]
       },
       "phoneNumber": {
         "type": "object",
         "properties": {
-          "internationalCode": { "type": "integer", "suds-application": "Contact", "suds-field": "International Code"},
-          "areaCode": { "type": "integer", "suds-application": "Contact", "suds-field": "Area Code"},
-          "number": { "type": "integer", "suds-application": "Contact", "suds-field": "Phone Number"},
-          "extension": { "type": "integer", "suds-application": "Contact", "suds-field": "Extension"},
-          "type": { "suds-application": "Contact", "suds-field": "Phone No. Type", "enum" : ["non-commercial","temp-outfitter-guide"]},
+          "areaCode": { "type": "integer", "basic-api-field": "AREA_CODE"},
+          "number": { "type": "integer", "basic-api-field": "PHONE_NUMBER"},
+          "extension": { "type": "integer", "basic-api-field": "EXTENSION"},
+          "type": { "basic-api-field" : "PHONE_NUMBER_TYPE"},
         },
         "required": ["areaCode","number","type"]
-      },
-      "location": {
-        "type": "object",
-        "properties": {
-          "latitude": { "type": "integer", "suds-application": "Contact", "suds-field": "International Code"},
-          "longitude": { "type": "integer", "suds-application": "Contact", "suds-field": "Area Code"},
-        },
-        "required": ["phoneAreaCode","phoneNumber","phoneType"]
       },
       "non-commercial-fields": {
         "type": "object",
         "properties": {
-      		"activityDescription": { "type": "string", "suds-application": "Application", "suds-field" : "Purpose"},
-      		"locationDescription": {	"type": "string", "suds-table": "application", "suds-field" : "purpose"},
-          "startDateTime": { "type": "dateTime", "suds-table": "application", "suds-field" : "remarks"},
-          "endDateTime": { "type": "dateTime", "suds-table": "application", "suds-field" : "remarks" },
-          "numberParticipants" : { "type": "integer",  "suds-field" : "remarks" }
+      		"activityDescription": { "type": "string", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
+      		"locationDescription": {	"type": "string", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
+          "startDateTime": { "type": "dateTime", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
+          "endDateTime": { "type": "dateTime", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note." },
+          "numberParticipants" : { "type": "integer",  "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note." },
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "PURPOSE", "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CR_EXEMPT", "value" : "Y"},
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "value" : "FS-2700-3b"},
           },
-        "pre-determined-suds-fields":
-        {
-          "!COMMENT" : "If the permit type is non-commercial, these fields can be set in SUDS without any additional input from the API user.",
-          "crExempt" : { "type" : "string", "suds-application" : "Application", "suds-field" : "value", "no"},
-          "code" : { "type" : "integer", "suds-application" : "Application", "suds-field" : "value", "191"}
-        }
       },
       "temp-outfitter-fields": {
         "type": "object",
@@ -67,36 +58,45 @@
       		"insuranceCertificate": {	"type": "file" },
           "goodStandingEvidence": {
       			"description": "Certificate of good standing, operating agreement, or other evidence the business is in good standing",
+            "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note below this one.",
             "type": "file"
           },
           "operatingPlan": {
       			"description": "A completed Word or RTF operating plan template.",
+            "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note below this one.",
             "type": "file"
           },
-          "pre-determined-suds-fields" : {
-            "!COMMENT" : "If the permit type is temporary outfitter/guide, these fields can be set in SUDS without any additional input from the API user.",
-            "crExempt" : { "type" : "string", "suds-application" : "Application", "suds-field" : "value", "yes"},
-            "code" : { "type" : "integer", "suds-application" : "Application", "suds-field" : "value", "153"}
-          },
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "PURPOSE", "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CR_EXEMPT", "value" : "N"},
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "value" : "FS-2700-3f"},
          "required": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
       },
     },
     "type": "object",
     "properties": {
-      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"]},
-      "forest-code": { "$ref": "#/definitions/applicant-info", "suds-application": "Contact,Application", "suds-field" : "Admin org, Security Code" },
-      "district-code": { "$ref": "#/definitions/applicant-info", "suds-application": "Contact,Application", "suds-field" : "Admin org, Security Code"  },
-      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"]},
-      "locations": {
-        "manyOf": [
-          { "$ref": "#/definitions/location" }
+      "region": { "type" : "integer" },
+      "forest": { "type" : "integer" },
+      "district": { "type" : "integer" },
+      "authorizingOfficerName": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_NAME"},
+      "authorizingOfficerTitle": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_TITLE"},
+      "applicant-info" : {
+        "oneOf" : [
+          { "$ref": "#/definitions/applicant-info" },
+          { "contact-id": { "type" : "integer" , "basic-api-field" : "CONT_ID" } }
         ]
       },
+      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"], "note" : "See the FORM_NAME fields in the blocks specific to each permit type"},
       "type-specific-fields": {
         "oneOf": [
           { "$ref": "#/definitions/non-commercial-fields" },
           { "$ref": "#/definitions/temp-outfitter-fields" },
         ]
-      }
+      },
+      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "SECURITY_ID", "note" : "Concatenation of region, forest and district code"},
+      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "MANAGING_ORG", "note" : "Concatenation of region, forest and district code"},
+      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "ADMIN_ORG", "note" : "Concatenation of region, forest and district code"},
+      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "SUDS_ID", "note" : "Generate an ID number that starts with forest alphacode, followed by five 0s, and then an incrementing number. "},
+      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "EFFECTIVE_DATE", "value" : "Today's date"},
+      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "STATUS", "value" : "Accepted"},
     }
 }
