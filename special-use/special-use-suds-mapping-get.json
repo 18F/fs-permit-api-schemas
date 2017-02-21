@@ -6,6 +6,7 @@
       "applicant-info": {
         "type": "object",
         "properties": {
+          "contactControlNumber": { "type": "string", "basic-api-field" : "CONT_CN"},
       		"firstName": { "type": "string", "basic-api-field" : "FIRST_NAME"},
       		"lastName": {	"type": "string", "basic-api-field" : "LAST_NAME" },
           "dayPhone": { "$ref": "#/definitions/phone-number" },
@@ -63,17 +64,13 @@
     },
     "type": "object",
     "properties": {
+      "controlNumber": { "type" : "integer", "basic-api-field" : "ACCINST_CN"},
       "region": { "type" : "integer" },
       "forest": { "type" : "integer" },
       "district": { "type" : "integer" },
       "authorizingOfficerName": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_NAME"},
       "authorizingOfficerTitle": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_TITLE"},
-      "applicant-info" : {
-        "oneOf" : [
-          { "$ref": "#/definitions/applicant-info" },
-          { "contact-id": { "type" : "integer" , "basic-api-field" : "CONT_ID" } }
-        ]
-      },
+      "applicant-info" : { "$ref": "#/definitions/applicant-info" } },
       "type" : { "enum" : ["non-commercial","temp-outfitter-guide"], "note" : "See the FORM_NAME fields in the blocks specific to each permit type"},
       "type-specific-fields": {
         "oneOf": [
