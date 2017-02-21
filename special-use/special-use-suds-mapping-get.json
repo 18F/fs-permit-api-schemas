@@ -22,11 +22,6 @@
       		},
           "website": { "type": "string", "suds-table": "Contact", "suds-field": "Remarks" },
           "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }, "basic-api-field" : "ORG_TYPE, ORG_CODE" },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "COUNTRY_NAME", "value" : "United States of America"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CONT_NAME", "note" : "Should be either the organizationName or the first/last name"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CONTACT_TYPE", "note" : "If organizationName is filled, then should be ORGANIZATION. If not PERSON."},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "ADDRESS_TYPE", "value" : "Main"},
-
         "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState"]
       },
       "phoneNumber": {
@@ -47,9 +42,6 @@
           "startDateTime": { "type": "dateTime", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
           "endDateTime": { "type": "dateTime", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note." },
           "numberParticipants" : { "type": "integer",  "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note." },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "PURPOSE", "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CR_EXEMPT", "value" : "Y"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "value" : "FS-2700-3b"},
           },
       },
       "temp-outfitter-fields": {
@@ -66,9 +58,6 @@
             "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note below this one.",
             "type": "file"
           },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "PURPOSE", "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CR_EXEMPT", "value" : "N"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "value" : "FS-2700-3f"},
          "required": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
       },
     },
@@ -92,11 +81,5 @@
           { "$ref": "#/definitions/temp-outfitter-fields" },
         ]
       },
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "SECURITY_ID", "note" : "Concatenation of region, forest and district code"},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "MANAGING_ORG", "note" : "Concatenation of region, forest and district code"},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "ADMIN_ORG", "note" : "Concatenation of region, forest and district code"},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "SUDS_ID", "note" : "Generate an ID number that starts with forest alphacode, followed by five 0s, and then an incrementing number. "},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "EFFECTIVE_DATE", "value" : "Today's date"},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "STATUS", "value" : "Accepted"},
     }
 }
