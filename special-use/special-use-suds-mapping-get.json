@@ -30,7 +30,7 @@
           "areaCode": { "type": "integer", "basic-api-field": "AREA_CODE"},
           "number": { "type": "integer", "basic-api-field": "PHONE_NUMBER"},
           "extension": { "type": "integer", "basic-api-field": "EXTENSION"},
-          "type": { "basic-api-field" : "PHONE_NUMBER_TYPE"},
+          "type": { "type": "string", "basic-api-field" : "PHONE_NUMBER_TYPE"},
         },
         "required": ["areaCode","number","type"]
       },
@@ -61,9 +61,9 @@
     "type": "object",
     "properties": {
       "controlNumber": { "type" : "integer", "basic-api-field" : "ACCINST_CN"},
-      "region": { "type" : "integer" },
-      "forest": { "type" : "integer" },
-      "district": { "type" : "integer" },
+      "region": { "type" : "integer", "basic-api-field" : "CONT_ID", "note" : "Derived from the first and second digit"},
+      "forest": { "type" : "integer", "basic-api-field" : "CONT_ID", "note" : "Derived from the third and fourth digit"},
+      "district": { "type" : "integer", "basic-api-field" : "CONT_ID", "note" : "Derived from the fifth and sixth digit" },
       "authorizingOfficerName": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_NAME"},
       "authorizingOfficerTitle": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_TITLE"},
       "applicant-info" : { "$ref": "#/definitions/applicant-info" } },
