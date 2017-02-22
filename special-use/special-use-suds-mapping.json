@@ -55,15 +55,18 @@
       "temp-outfitter-fields": {
         "type": "object",
         "properties": {
-      		"insuranceCertificate": {	"type": "file" },
+      		"insuranceCertificate": {
+            "type": "file",
+            "note": "Stored in the middle layer.",
+          },
           "goodStandingEvidence": {
       			"description": "Certificate of good standing, operating agreement, or other evidence the business is in good standing",
-            "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note below this one.",
+            "note": "Stored in the middle layer.",
             "type": "file"
           },
           "operatingPlan": {
       			"description": "A completed Word or RTF operating plan template.",
-            "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note below this one.",
+            "note": "Stored in the middle layer.",
             "type": "file"
           },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "PURPOSE", "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
