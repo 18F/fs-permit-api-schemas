@@ -40,7 +40,7 @@
         "properties": {
       		"purpose": { "type": "string", "basic-api-field" : "PURPOSE"},
           },
-        "required": ["purose"]
+        "required": ["purpose"]
       },
       "temp-outfitter-fields": {
         "type": "object",
