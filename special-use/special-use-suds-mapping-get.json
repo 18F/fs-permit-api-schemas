@@ -48,15 +48,15 @@
       		"insuranceCertificate": {	"type": "file" },
           "goodStandingEvidence": {
       			"description": "Certificate of good standing, operating agreement, or other evidence the business is in good standing",
-            "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note below this one.",
+            "note": "This file should be stored in the middle layer and retrieved (if available) with a GET request.",
             "type": "file"
           },
           "operatingPlan": {
       			"description": "A completed Word or RTF operating plan template.",
-            "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note below this one.",
+            "note": "This file should be stored in the middle layer and retrieved (if available) with a GET request.",
             "type": "file"
           },
-         "required": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
+         "required": ["insuranceCertificate","goodStandingEvidence","operatingPlan"]
       },
     },
     "type": "object",
