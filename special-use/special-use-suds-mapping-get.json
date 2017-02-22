@@ -21,7 +21,7 @@
       			"description": "The name of the group, company, organization or event applying, if CONTACT_TYPE is organization",
       			"type": "integer",
       		},
-          "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }, "basic-api-field" : "ORG_TYPE, ORG_CODE" },
+          "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }, "basic-api-field" : "ORG_TYPE" },
         "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState"]
       },
       "phoneNumber": {
