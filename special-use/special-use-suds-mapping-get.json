@@ -38,11 +38,11 @@
       "non-commercial-fields": {
         "type": "object",
         "properties": {
-      		"activityDescription": { "type": "string", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
-      		"locationDescription": {	"type": "string", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
-          "startDateTime": { "type": "dateTime", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
-          "endDateTime": { "type": "dateTime", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note." },
-          "numberParticipants" : { "type": "integer",  "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note." },
+      		"activityDescription": { "type": "string", "note": "Retrieved from the middle layer."},
+      		"locationDescription": {	"type": "string", "note": "Retrieved from the middle layer."},
+          "startDateTime": { "type": "dateTime", "note": "Retrieved from the middle layer."},
+          "endDateTime": { "type": "dateTime", "note": "Retrieved from the middle layer." },
+          "numberParticipants" : { "type": "integer",  "note": "Retrieved from the middle layer." },
           },
         "required": ["purpose"]
       },
