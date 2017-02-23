@@ -20,7 +20,7 @@
       			"description": "The name of the group, company, organization or event applying",
       			"type": "integer",
       		},
-          "website": { "type": "string", "suds-table": "Contact", "suds-field": "Remarks" },
+          "website": { "type": "string", "note" : "Store in middle layer." },
           "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }, "basic-api-field" : "ORG_TYPE, ORG_CODE" },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "COUNTRY_NAME", "value" : "United States of America"},
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CONT_NAME", "note" : "Should be either the organizationName or the first/last name"},
