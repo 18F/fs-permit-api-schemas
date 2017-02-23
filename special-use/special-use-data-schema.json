@@ -30,7 +30,7 @@
           "areaCode": { "type": "integer"},
           "number": { "type": "integer"},
           "extension": { "type": "integer"},
-          "type": { "basic-api-field" : "PHONE_NUMBER_TYPE"},
+          "type": { "basic-api-field" : "PHONE_NUMBER_TYPE", "note" : "We should limit responses to a few options."},
         },
         "required": ["areaCode","number","type"]
       },
