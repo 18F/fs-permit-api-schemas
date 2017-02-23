@@ -6,6 +6,7 @@
       "applicant-info": {
         "type": "object",
         "properties": {
+          "contactControlNumber": { "type": "string", "basic-api-field" : "CONT_CN"},
       		"firstName": { "type": "string", "basic-api-field" : "FIRST_NAME"},
       		"lastName": {	"type": "string", "basic-api-field" : "LAST_NAME" },
           "dayPhone": { "$ref": "#/definitions/phone-number" },
@@ -17,16 +18,11 @@
           "mailingState": { "type": "string", "basic-api-field" : "STATE_CODE"},
           "mailingZIP": { "type": "integer", "basic-api-field": "POSTAL_CODE"},
       		"organizationName": {
-      			"description": "The name of the group, company, organization or event applying",
+      			"description": "The name of the group, company, organization or event applying, if CONTACT_TYPE is organization",
       			"type": "integer",
       		},
           "website": { "type": "string", "note" : "Store in middle layer." },
           "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }, "basic-api-field" : "ORG_TYPE, ORG_CODE" },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "COUNTRY_NAME", "value" : "United States of America"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CONT_NAME", "note" : "Should be either the organizationName or the first/last name"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CONTACT_TYPE", "note" : "If organizationName is filled, then should be ORGANIZATION. If not PERSON."},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "ADDRESS_TYPE", "value" : "Main"},
-
         "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState"]
       },
       "phoneNumber": {
@@ -42,15 +38,13 @@
       "non-commercial-fields": {
         "type": "object",
         "properties": {
-      		"activityDescription": { "type": "string", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
-      		"locationDescription": {	"type": "string", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
-          "startDateTime": { "type": "dateTime", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note."},
-          "endDateTime": { "type": "dateTime", "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note." },
-          "numberParticipants" : { "type": "integer",  "note": "See the 'AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE' note." },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "PURPOSE", "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CR_EXEMPT", "value" : "Y"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "value" : "FS-2700-3b"},
+      		"activityDescription": { "type": "string", "note": "Retrieved from the middle layer."},
+      		"locationDescription": {	"type": "string", "note": "Retrieved from the middle layer."},
+          "startDateTime": { "type": "dateTime", "note": "Retrieved from the middle layer."},
+          "endDateTime": { "type": "dateTime", "note": "Retrieved from the middle layer." },
+          "numberParticipants" : { "type": "integer",  "note": "Retrieved from the middle layer." },
           },
+        "required": ["purpose"]
       },
       "temp-outfitter-fields": {
         "type": "object",
@@ -61,33 +55,26 @@
           },
           "goodStandingEvidence": {
       			"description": "Certificate of good standing, operating agreement, or other evidence the business is in good standing",
-            "note": "Stored in the middle layer.",
+            "note": "This file should be stored in the middle layer and retrieved (if available) with a GET request.",
             "type": "file"
           },
           "operatingPlan": {
       			"description": "A completed Word or RTF operating plan template.",
-            "note": "Stored in the middle layer.",
+            "note": "This file should be stored in the middle layer and retrieved (if available) with a GET request.",
             "type": "file"
           },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "PURPOSE", "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CR_EXEMPT", "value" : "N"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "value" : "FS-2700-3f"},
-         "required": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
+         "required": ["insuranceCertificate","goodStandingEvidence","operatingPlan"]
       },
     },
     "type": "object",
     "properties": {
-      "region": { "type" : "integer" },
-      "forest": { "type" : "integer" },
-      "district": { "type" : "integer" },
+      "controlNumber": { "type" : "integer", "basic-api-field" : "ACCINST_CN"},
+      "region": { "type" : "integer", "basic-api-field" : "CONT_ID", "note" : "Derived from the first and second digit"},
+      "forest": { "type" : "integer", "basic-api-field" : "CONT_ID", "note" : "Derived from the third and fourth digit"},
+      "district": { "type" : "integer", "basic-api-field" : "CONT_ID", "note" : "Derived from the fifth and sixth digit" },
       "authorizingOfficerName": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_NAME"},
       "authorizingOfficerTitle": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_TITLE"},
-      "applicant-info" : {
-        "oneOf" : [
-          { "$ref": "#/definitions/applicant-info" },
-          { "contact-id": { "type" : "integer" , "basic-api-field" : "CONT_ID" } }
-        ]
-      },
+      "applicant-info" : { "$ref": "#/definitions/applicant-info" } },
       "type" : { "enum" : ["non-commercial","temp-outfitter-guide"], "note" : "See the FORM_NAME fields in the blocks specific to each permit type"},
       "type-specific-fields": {
         "oneOf": [
@@ -95,11 +82,5 @@
           { "$ref": "#/definitions/temp-outfitter-fields" },
         ]
       },
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "SECURITY_ID", "note" : "Concatenation of region, forest and district code"},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "MANAGING_ORG", "note" : "Concatenation of region, forest and district code"},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "ADMIN_ORG", "note" : "Concatenation of region, forest and district code"},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "SUDS_ID", "note" : "Generate an ID number that starts with forest alphacode, followed by five 0s, and then an incrementing number. "},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "EFFECTIVE_DATE", "value" : "Today's date"},
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "STATUS", "value" : "Accepted"},
     }
 }
