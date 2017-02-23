@@ -20,7 +20,7 @@
       			"description": "The name of the group, company, organization or event applying",
       			"type": "integer",
       		},
-          "website": { "type": "string", "suds-table": "Contact" },
+          "website": { "type": "string", "note" : "Store in middle layer." },
           "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }},
         "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState"]
       },
