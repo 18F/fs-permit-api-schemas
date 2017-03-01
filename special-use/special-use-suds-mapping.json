@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Special use application",
-    "description": "A rough sketch of the POST JSON HTTP request and corresponding SUDS fields for a special use permit from the U.S. Forest Service ePermitting system",
+    "description": "A rough sketch of the GET JSON HTTP request and corresponding SUDS fields for a special use permit from the U.S. Forest Service ePermitting system",
     "definitions": {
       "applicant-info": {
         "type": "object",
