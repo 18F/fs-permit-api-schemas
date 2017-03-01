@@ -82,5 +82,6 @@
           { "$ref": "#/definitions/temp-outfitter-fields" },
         ]
       },
-    }
+    },
+    "required" : ["region","forest","district","authorizingOfficerName","authorizingOfficerTitle","applicant-info","type","type-specific-fields"]
 }
