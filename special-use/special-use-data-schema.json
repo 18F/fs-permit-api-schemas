@@ -83,5 +83,6 @@
           { "$ref": "#/definitions/non-commercial-fields" },
           { "$ref": "#/definitions/temp-outfitter-fields" },
         ]
-    }
+    },
+    "required" : ["region","forest","district","authorizingOfficerName","authorizingOfficerTitle","applicant-info","type","type-specific-fields"],
 }
