@@ -52,6 +52,8 @@
           "activityDescription": { "type": "string"},
           "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete."},
           "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete."},
+          "clientCharges": { "type": "string"},
+
       		"insuranceCertificate": {
             "type": "file",
             "note": "Stored in the middle layer.",
