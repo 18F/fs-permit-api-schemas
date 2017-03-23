@@ -76,7 +76,7 @@
             "note": "Stored in the middle layer.",
             "type": "file"
           },
-         "required": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
+         "required": ["activityDescription","clientCharges","insuranceCertificate","goodStandingEvidence","operatingPlan"]
       },
     },
     "type": "object",
