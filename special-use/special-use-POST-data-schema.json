@@ -49,6 +49,7 @@
         "properties": {
           "individualIsCitizen" : { "type" : "boolean", "note" : "Required if contactType is individual."},
           "smallBusiness" : { "type" : "boolean", "note" : "Required if contactType is not individual."},
+          "activityDescription": { "type": "string"},
       		"insuranceCertificate": {
             "type": "file",
             "note": "Stored in the middle layer.",
