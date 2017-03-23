@@ -57,6 +57,10 @@
             "type": "file",
             "note": "Stored in the middle layer.",
           },
+          "acknowledgementOfRiskForm": {
+            "type": "file",
+            "note": "Stored in the middle layer.",
+          },
       		"insuranceCertificate": {
             "type": "file",
             "note": "Stored in the middle layer.",
