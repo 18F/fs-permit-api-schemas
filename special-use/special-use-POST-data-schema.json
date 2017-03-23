@@ -53,6 +53,7 @@
           "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete."},
           "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete."},
           "clientCharges": { "type": "string"},
+          "experienceList": { "type": "string"},
           "guideDocumentation": {
             "type": "file",
             "note": "Stored in the middle layer.",
