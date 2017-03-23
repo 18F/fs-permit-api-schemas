@@ -53,7 +53,7 @@
             "note": "Stored in the middle layer.",
           },
           "goodStandingEvidence": {
-      			"description": "Certificate of good standing, operating agreement, or other evidence the business is in good standing",
+      			"description": "Required for all non-individual contact types. Certificate of good standing, operating agreement, or other evidence the business is in good standing",
             "note": "Stored in the middle layer.",
             "type": "file"
           },
