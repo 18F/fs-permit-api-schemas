@@ -50,6 +50,8 @@
           "individualIsCitizen" : { "type" : "boolean", "note" : "Required if contactType is individual."},
           "smallBusiness" : { "type" : "boolean", "note" : "Required if contactType is not individual."},
           "activityDescription": { "type": "string"},
+          "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete."},
+          "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete."},
       		"insuranceCertificate": {
             "type": "file",
             "note": "Stored in the middle layer.",
