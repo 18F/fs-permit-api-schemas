@@ -55,13 +55,13 @@
       "temp-outfitter-fields": {
         "type": "object",
         "properties": {
-          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if contactType is individual."},
-          "smallBusiness" : { "type" : "boolean", "note" : "Required if contactType is not individual."},
-          "activityDescription": { "type": "string", "basic-api-field": "PURPOSE"},
-          "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete."},
-          "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete."},
-          "clientCharges": { "type": "string"},
-          "experienceList": { "type": "string"},
+          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if contactType is individual. Stored in the middlelayer."},
+          "smallBusiness" : { "type" : "boolean", "note" : "Required if contactType is not individual. Stored in the middlelayer."},
+          "activityDescription": { "type": "string", "note": "Stored in the middlelayer."},
+          "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middlelayer."},
+          "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middlelayer."},
+          "clientCharges": { "type": "string", "note": "Stored in the middlelayer."},
+          "experienceList": { "type": "string", "note": "Stored in the middlelayer."},
           "guideDocumentation": {
             "type": "file",
             "note": "Stored in the middle layer.",
