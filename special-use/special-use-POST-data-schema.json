@@ -47,6 +47,7 @@
       "temp-outfitter-fields": {
         "type": "object",
         "properties": {
+          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if contactType is individual."},
       		"insuranceCertificate": {
             "type": "file",
             "note": "Stored in the middle layer.",
