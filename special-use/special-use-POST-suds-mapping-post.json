@@ -114,7 +114,6 @@
             "note": "Stored in the middle layer.",
             "type": "file"
           },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CR_EXEMPT", "value" : "N"},
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "value" : "FS-2700-3f"},
          "required-by-basic-api": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
       },
