@@ -36,21 +36,23 @@
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "contactID",
             "basic-api-endpoint": { "enum" : ["/contact-person", "/contact-organization"] },
+            "required-by-basic-api": "yes",
             "note": "This field is deprecated, but has to be filled with something."
           },
       },
       "phoneNumber": {
         "type": "object",
         "properties": {
-          "areaCode": { "type": "integer", "basic-api-field": "areaCode", "basic-api-endpoint": "/contact-phone"},
-          "number": { "type": "integer", "basic-api-field": "phoneNumber", "basic-api-endpoint": "/contact-phone"},
-          "extension": { "type": "integer", "basic-api-field": "extension", "basic-api-endpoint": "/contact-phone"},
-          "type": { "basic-api-field" : "phoneNumber",
+          "areaCode": { "type": "integer", "basic-api-field": "areaCode", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": "yes"},
+          "number": { "type": "integer", "basic-api-field": "phoneNumber", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": "yes"},
+          "extension": { "type": "integer", "basic-api-field": "extension", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": "no"},
+          "type": {
+            "basic-api-field" : "phoneNumber",
             "note" : "We should limit responses to a few options, even though SUDS does not.",
-            "basic-api-endpoint": "/contact-phone"
+            "basic-api-endpoint": "/contact-phone",
+            "required-by-basic-api": "yes"
           },
         },
-        "required-by-basic-api": ["number","type", "securityId", "contact"]
       },
       "non-commercial-fields": {
         "type": "object",
@@ -63,7 +65,8 @@
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "PURPOSE",
             "basic-api-endpoint": "/contact/application",
-            "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
+            "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime.",
+            "required-by-basic-api": "Y"},
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "formName",
             "value" : "FS-2700-3b",
@@ -76,7 +79,7 @@
         "properties": {
           "individualIsCitizen" : { "type" : "boolean", "note" : "Required if orgType is individual. Stored in the middle layer."},
           "smallBusiness" : { "type" : "boolean", "note" : "Required if orgType is not individual. Stored in the middle layer."},
-          "activityDescription": { "type": "string", "note": "Stored in the middle layer.", "basic-api-field": "PURPOSE", "basic-api-endpoint": "/contact/application"},
+          "activityDescription": { "type": "string", "note": "Stored in the middle layer.", "basic-api-field": "PURPOSE", "basic-api-endpoint": "/contact/application", "required-by-basic-api": "Y"},
           "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middle layer."},
           "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middle layer."},
           "clientCharges": { "type": "string", "note": "Stored in the middle layer."},
@@ -103,8 +106,7 @@
             "note": "Stored in the middle layer.",
             "type": "file"
           },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "value" : "FS-2700-3f"},
-         "required-by-basic-api": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "basic-api-endpoint": "/contact/application", "value" : "FS-2700-3f", "required-by-basic-api": "Y"},
       },
     },
     "type": "object",
