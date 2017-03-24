@@ -76,7 +76,7 @@
         "properties": {
           "individualIsCitizen" : { "type" : "boolean", "note" : "Required if orgType is individual. Stored in the middlelayer."},
           "smallBusiness" : { "type" : "boolean", "note" : "Required if orgType is not individual. Stored in the middlelayer."},
-          "activityDescription": { "type": "string", "note": "Stored in the middlelayer.", "basic-api-field": "PURPOSE"},
+          "activityDescription": { "type": "string", "note": "Stored in the middlelayer.", "basic-api-field": "PURPOSE", "basic-api-endpoint": "/contact/application"},
           "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middlelayer."},
           "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middlelayer."},
           "clientCharges": { "type": "string", "note": "Stored in the middlelayer."},
