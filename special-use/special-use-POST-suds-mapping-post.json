@@ -149,6 +149,6 @@
           "required-by-basic-api": "Y"}         },
       "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "contCN",
           "note" : "If there is no matching contact, included in the response to the /contact/person or /contact/organization endpoint. If there is a pre-existing contact, should be contact-id field above.",
-          "basic-api-endpoint": "/application",
+          "basic-api-endpoint": { "enum" : ["/contact-person", "/contact-address", "/contact-phone"] },
           "required-by-basic-api": "Y"}         },
 }
