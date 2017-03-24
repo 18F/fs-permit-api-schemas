@@ -77,33 +77,33 @@
       "temp-outfitter-fields": {
         "type": "object",
         "properties": {
-          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if orgType is individual. Stored in the middle layer."},
-          "smallBusiness" : { "type" : "boolean", "note" : "Required if orgType is not individual. Stored in the middle layer."},
-          "activityDescription": { "type": "string", "note": "Stored in the middle layer.", "basic-api-field": "PURPOSE", "basic-api-endpoint": "/contact/application", "required-by-basic-api": true},
-          "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middle layer."},
-          "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middle layer."},
-          "clientCharges": { "type": "string", "note": "Stored in the middle layer."},
-          "experienceList": { "type": "string", "note": "Stored in the middle layer."},
+          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if orgType is individual.", "stored-in-middle-layer": true},
+          "smallBusiness" : { "type" : "boolean", "note" : "Required if orgType is not individual", "stored-in-middle-layer": true},
+          "activityDescription": { "type": "string", "stored-in-middle-layer": true, "basic-api-field": "PURPOSE", "basic-api-endpoint": "/contact/application", "required-by-basic-api": true},
+          "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete.", "stored-in-middle-layer": true},
+          "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete.", "stored-in-middle-layer": true},
+          "clientCharges": { "type": "string", "stored-in-middle-layer": true},
+          "experienceList": { "type": "string", "stored-in-middle-layer": true},
           "guideDocumentation": {
             "type": "file",
-            "note": "Stored in the middle layer.",
+            "stored-in-middle-layer": true,
           },
           "acknowledgementOfRiskForm": {
             "type": "file",
-            "note": "Stored in the middle layer.",
+            "stored-in-middle-layer": true,
           },
       		"insuranceCertificate": {
             "type": "file",
-            "note": "Stored in the middle layer.",
+            "stored-in-middle-layer": true,
           },
           "goodStandingEvidence": {
       			"description": "Certificate of good standing, operating agreement, or other evidence the business is in good standing",
-            "note": "Stored in the middle layer.",
+            "stored-in-middle-layer": true,
             "type": "file"
           },
           "operatingPlan": {
       			"description": "A completed Word or RTF operating plan template.",
-            "note": "Stored in the middle layer.",
+            "stored-in-middle-layer": true,
             "type": "file"
           },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "basic-api-endpoint": "/contact/application", "value" : "FS-2700-3f", "required-by-basic-api": true},
