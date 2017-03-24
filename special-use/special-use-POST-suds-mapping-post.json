@@ -74,13 +74,13 @@
       "temp-outfitter-fields": {
         "type": "object",
         "properties": {
-          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if orgType is individual. Stored in the middlelayer."},
-          "smallBusiness" : { "type" : "boolean", "note" : "Required if orgType is not individual. Stored in the middlelayer."},
-          "activityDescription": { "type": "string", "note": "Stored in the middlelayer.", "basic-api-field": "PURPOSE", "basic-api-endpoint": "/contact/application"},
-          "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middlelayer."},
-          "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middlelayer."},
-          "clientCharges": { "type": "string", "note": "Stored in the middlelayer."},
-          "experienceList": { "type": "string", "note": "Stored in the middlelayer."},
+          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if orgType is individual. Stored in the middle layer."},
+          "smallBusiness" : { "type" : "boolean", "note" : "Required if orgType is not individual. Stored in the middle layer."},
+          "activityDescription": { "type": "string", "note": "Stored in the middle layer.", "basic-api-field": "PURPOSE", "basic-api-endpoint": "/contact/application"},
+          "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middle layer."},
+          "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middle layer."},
+          "clientCharges": { "type": "string", "note": "Stored in the middle layer."},
+          "experienceList": { "type": "string", "note": "Stored in the middle layer."},
           "guideDocumentation": {
             "type": "file",
             "note": "Stored in the middle layer.",
