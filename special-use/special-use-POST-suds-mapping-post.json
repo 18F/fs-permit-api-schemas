@@ -64,7 +64,7 @@
             "basic-api-field": "PURPOSE",
             "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-            "basic-api-field": "FORM_NAME",
+            "basic-api-field": "formName",
             "value" : "FS-2700-3b",
             "basic-api-endpoint": "/contact/application",
             "required-by-basic-api": "Y"},
