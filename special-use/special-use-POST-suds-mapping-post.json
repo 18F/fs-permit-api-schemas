@@ -24,18 +24,15 @@
             "required-by-basic-api": "yes"
       		},
           "website": { "type": "string", "note" : "Store in middle layer." },
-          "orgType": { "type": { "enum": [ "Association","Corporation","Education","Federal Government","State Government","Local Govt","Married Common Property","Limited Liability Company (LLC)","Limited Liability Corporation (LLP)","Trust" ] },
-           "basic-api-field" : "orgType",
-           "basic-api-endpoint": "/contact/organization",
-           "required-by-basic-api": "yes" },
+          "orgType": {
+            "type": { "enum": [ "Association","Corporation","Education","Federal Government","State Government","Local Govt","Married Common Property","Limited Liability Company (LLC)","Limited Liability Corporation (LLP)","Trust" ] },
+            "basic-api-field" : "orgType",
+            "basic-api-endpoint": "/contact/organization",
+            "required-by-basic-api": "yes" },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "countryName",
             "value" : "United States of America",
             "basic-api-endpoint": "/contact-address",
             "required-by-basic-api": "no"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-            "basic-api-field": "addressType", "value" : "BUSINESS",
-            "note": "Need to confirm that type is business to create an application"
-          },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "contactID",
             "basic-api-endpoint": { "enum" : ["/contact-person", "/contact-organization"] },
