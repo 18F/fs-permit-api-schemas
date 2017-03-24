@@ -62,6 +62,7 @@
           "numberParticipants" : { "type": "integer", "note" : "Store in middle layer." },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "PURPOSE",
+            "basic-api-endpoint": "/contact/application",
             "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "formName",
