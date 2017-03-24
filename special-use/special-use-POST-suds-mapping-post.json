@@ -140,7 +140,7 @@
         "basic-api-endpoint": "/application",
         "required-by-basic-api": true},
       "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "ePermitID",
-        "note" : "Generate an ID number that starts with forest alphacode, followed by five 0s, and then an incrementing number. ",
+        "note" : "Generate an ID number that follows the following formula: Region number + Forest number + 00000 + number incrementing right ",
         "basic-api-endpoint": "/application",
         "required-by-basic-api": true},
       "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "acres",
