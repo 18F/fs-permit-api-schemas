@@ -37,7 +37,7 @@
             "note": "Need to confirm that type is business to create an application"
           },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-            "basic-api-field": "contID",
+            "basic-api-field": "contactID",
             "basic-api-endpoint": { "enum" : ["/contact-person", "/contact-organization"] },
             "note": "This field is deprecated, but has to be filled with something."
           },
@@ -89,8 +89,8 @@
       "temp-outfitter-fields": {
         "type": "object",
         "properties": {
-          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if contactType is individual. Stored in the middlelayer."},
-          "smallBusiness" : { "type" : "boolean", "note" : "Required if contactType is not individual. Stored in the middlelayer."},
+          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if orgType is individual. Stored in the middlelayer."},
+          "smallBusiness" : { "type" : "boolean", "note" : "Required if orgType is not individual. Stored in the middlelayer."},
           "activityDescription": { "type": "string", "note": "Stored in the middlelayer."},
           "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middlelayer."},
           "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete. Stored in the middlelayer."},
