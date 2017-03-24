@@ -156,5 +156,8 @@
       "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "acres",
           "note" : "Value should always be 0",
           "required-by-basic-api": "Y"}         },
-
+      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "contCN",
+          "note" : "Included in the response to the /contact/person or /contact/organization endpoint",
+          "basic-api-endpoint": "/application",
+          "required-by-basic-api": "Y"}         },
 }
