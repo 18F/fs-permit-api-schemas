@@ -63,7 +63,7 @@
           "endDateTime": { "type": "dateTime", "note" : "Store in middle layer." },
           "numberParticipants" : { "type": "integer", "note" : "Store in middle layer." },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-            "basic-api-field": "PURPOSE",
+            "basic-api-field": "purpose",
             "basic-api-endpoint": "/contact/application",
             "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime.",
             "required-by-basic-api": true},
