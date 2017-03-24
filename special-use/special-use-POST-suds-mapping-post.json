@@ -49,12 +49,6 @@
             "note" : "We should limit responses to a few options, even though SUDS does not.",
             "basic-api-endpoint": "/contact-phone"
           },
-        "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-          "type": "string",
-          "basic-api-field": "contact",
-          "basic-api-endpoint": "/contact-phone",
-          "note" : "This will be populated from the response of the /contact/person or /contact/organization POST request."
-        },
         },
         "required-by-basic-api": ["number","type", "securityId", "contact"]
       },
