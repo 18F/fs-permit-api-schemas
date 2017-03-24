@@ -37,7 +37,7 @@
             "basic-api-field": "contactID",
             "basic-api-endpoint": { "enum" : ["/contact-person", "/contact-organization"] },
             "required-by-basic-api": "yes",
-            "note": "This field is deprecated, but has to be filled with something."
+            "note": "Set to the value of the 'ePermitID' field. This field is deprecated in SUDS, but does need to be filled. Most permit administrators use a random string."
           },
       },
       "phoneNumber": {
