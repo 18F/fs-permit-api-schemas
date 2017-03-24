@@ -19,9 +19,12 @@
       		"organizationName": {
       			"description": "The name of the group, company, organization or event applying",
       			"type": "string",
+            "basic-api-field" : "contName",
+            "basic-api-endpoint": "/contact/organization",
+            "required-by-basic-api": "yes"
       		},
           "website": { "type": "string", "note" : "Store in middle layer." },
-          "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] },
+          "orgType": { "type": { "enum": [ "Association","Corporation","Education","Federal Government","State Government","Local Govt","Married Common Property","Limited Liability Company (LLC)","Limited Liability Corporation (LLP)","Trust" ] },
            "basic-api-field" : "orgType",
            "basic-api-endpoint": "/contact/organization",
            "required-by-basic-api": "yes" },
@@ -29,11 +32,6 @@
             "value" : "United States of America",
             "basic-api-endpoint": "/contact-address",
             "required-by-basic-api": "no"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-            "basic-api-field": "contName",
-            "basic-api-endpoint": ["/contact/organization", "/contact/person"],
-            "note" : "Should be either the organizationName or the first/last name"
-          },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "addressType", "value" : "BUSINESS",
             "note": "Need to confirm that type is business to create an application"
