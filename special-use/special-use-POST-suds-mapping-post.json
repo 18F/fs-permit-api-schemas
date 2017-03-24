@@ -106,7 +106,7 @@
             "stored-in-middle-layer": true,
             "type": "file"
           },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "basic-api-endpoint": "/contact/application", "value" : "FS-2700-3f", "required-by-basic-api": true},
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "formName", "basic-api-endpoint": "/contact/application", "value" : "FS-2700-4i", "required-by-basic-api": true},
       },
     },
     "type": "object",
