@@ -36,6 +36,11 @@
             "basic-api-field": "addressType", "value" : "BUSINESS",
             "note": "Need to confirm that type is business to create an application"
           },
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
+            "basic-api-field": "contID",
+            "basic-api-endpoint": { "enum" : ["/contact-person", "/contact-organization"] },
+            "note": "This field is deprecated, but has to be filled with something."
+          },
       },
       "phoneNumber": {
         "type": "object",
