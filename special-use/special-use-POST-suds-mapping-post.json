@@ -1,66 +1,58 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Special use application",
-    "description": "A rough sketch of the POST JSON HTTP request and corresponding SUDS fields for a special use permit from the U.S. Forest Service ePermitting system",
+    "description": "A rough sketch of the POST JSON HTTP request and corresponding basic SUDS API fields and endpoints for a special use permit application from the U.S. Forest Service ePermitting system",
     "definitions": {
       "applicant-info": {
         "type": "object",
         "properties": {
-      		"firstName": { "type": "string", "basic-api-field" : "firstName", "basic-api-endpoint": "/contact/person", "required-by-basic-api": "no"},
-      		"lastName": {	"type": "string", "basic-api-field" : "lastName", "basic-api-endpoint": "/contact/person", "required-by-basic-api": "yes" },
+      		"firstName": { "type": "string", "basic-api-field" : "firstName", "basic-api-endpoint": "/contact/person", "required-by-basic-api": false},
+      		"lastName": {	"type": "string", "basic-api-field" : "lastName", "basic-api-endpoint": "/contact/person", "required-by-basic-api": true },
           "dayPhone": { "$ref": "#/definitions/phone-number" },
           "eveningPhone": { "$ref": "#/definitions/phone-number" },
-          "emailAddress": { "type": "string", "basic-api-field" : "email", "basic-api-endpoint": "/contact-address", "required-by-basic-api": "no"},
-          "mailingAddress": { "type": "string", "basic-api-field" : "address1", "basic-api-endpoint": "/contact-address", "required-by-basic-api": "yes"},
-          "mailingAddress2": { "type": "string", "basic-api-field": "address2", "basic-api-endpoint": "/contact-address", "required-by-basic-api": "no"},
-          "mailingCity": { "type": "string", "basic-api-field" : "cityName", "basic-api-endpoint": "/contact-address", "required-by-basic-api": "yes"},
-          "mailingState": { "type": "string", "basic-api-field" : "stateCode", "basic-api-endpoint": "/contact-address", "required-by-basic-api": "yes"},
-          "mailingZIP": { "type": "integer", "basic-api-field": "postalCode", "basic-api-endpoint": "/contact-address", "required-by-basic-api": "yes"},
+          "emailAddress": { "type": "string", "basic-api-field" : "email", "basic-api-endpoint": "/contact-address", "required-by-basic-api": false},
+          "mailingAddress": { "type": "string", "basic-api-field" : "address1", "basic-api-endpoint": "/contact-address", "required-by-basic-api": true},
+          "mailingAddress2": { "type": "string", "basic-api-field": "address2", "basic-api-endpoint": "/contact-address", "required-by-basic-api": false},
+          "mailingCity": { "type": "string", "basic-api-field" : "cityName", "basic-api-endpoint": "/contact-address", "required-by-basic-api": true},
+          "mailingState": { "type": "string", "basic-api-field" : "stateCode", "basic-api-endpoint": "/contact-address", "required-by-basic-api": true},
+          "mailingZIP": { "type": "integer", "basic-api-field": "postalCode", "basic-api-endpoint": "/contact-address", "required-by-basic-api": true},
       		"organizationName": {
       			"description": "The name of the group, company, organization or event applying",
       			"type": "string",
+            "basic-api-field" : "contName",
+            "basic-api-endpoint": "/contact/organization",
+            "required-by-basic-api": true
       		},
           "website": { "type": "string", "note" : "Store in middle layer." },
-          "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] },
-           "basic-api-field" : "orgType",
-           "basic-api-endpoint": "/contact/organization",
-           "required-by-basic-api": "yes" },
+          "orgType": {
+            "type": { "enum": [ "Association","Corporation","Education","Federal Government","State Government","Local Govt","Married Common Property","Limited Liability Company (LLC)","Limited Liability Corporation (LLP)","Trust" ] },
+            "basic-api-field" : "orgType",
+            "basic-api-endpoint": "/contact/organization",
+            "required-by-basic-api": true },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "countryName",
             "value" : "United States of America",
             "basic-api-endpoint": "/contact-address",
-            "required-by-basic-api": "no"},
+            "required-by-basic-api": false},
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-            "basic-api-field": "contName",
-            "basic-api-endpoint": ["/contact/organization", "/contact/person"],
-            "note" : "Should be either the organizationName or the first/last name"
-          },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-            "basic-api-field": "addressType", "value" : "BUSINESS",
-            "note": "Need to confirm that type is business to create an application"
+            "basic-api-field": "contactID",
+            "basic-api-endpoint": { "enum" : ["/contact-person", "/contact-organization"] },
+            "required-by-basic-api": true,
+            "note": "If the contact is a person, set to firstName, lastName. If the contact is an organization, set to contName."
           },
       },
       "phoneNumber": {
         "type": "object",
         "properties": {
-          "areaCode": { "type": "integer", "basic-api-field": "areaCode", "basic-api-endpoint": "/contact-phone"},
-          "number": { "type": "integer", "basic-api-field": "phoneNumber", "basic-api-endpoint": "/contact-phone"},
-          "extension": { "type": "integer", "basic-api-field": "extension", "basic-api-endpoint": "/contact-phone"},
-          "type": { "basic-api-field" : "phoneNumber",
+          "areaCode": { "type": "integer", "basic-api-field": "areaCode", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": true},
+          "number": { "type": "integer", "basic-api-field": "phoneNumber", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": true},
+          "extension": { "type": "integer", "basic-api-field": "extension", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": false},
+          "type": {
+            "basic-api-field" : "phoneNumber",
             "note" : "We should limit responses to a few options, even though SUDS does not.",
-            "basic-api-endpoint": "/contact-phone"
+            "basic-api-endpoint": "/contact-phone",
+            "required-by-basic-api": true
           },
-      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "securityId",
-        "note" : "Concatenation of region, forest and district code",
-        "basic-api-endpoint": "/contact-phone"
         },
-        "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-          "type": "string",
-          "basic-api-field": "contact",
-          "basic-api-endpoint": "/contact-phone",
-          "note" : "This will be populated from the response of the /contact/person or /contact/organization POST request."
-        },
-        },
-        "required-by-basic-api": ["number","type", "securityId", "contact"]
       },
       "non-commercial-fields": {
         "type": "object",
@@ -70,40 +62,51 @@
           "startDateTime": { "type": "dateTime", "note" : "Store in middle layer."},
           "endDateTime": { "type": "dateTime", "note" : "Store in middle layer." },
           "numberParticipants" : { "type": "integer", "note" : "Store in middle layer." },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "PURPOSE",
-            "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "crExemptInd",
-            "value" : "Y",
-            "basic-api-endpoint": "/contact/application",
-            "required-by-basic-api": "N"},
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
-            "basic-api-field": "FORM_NAME",
+            "basic-api-field": "purpose",
+            "basic-api-endpoint": "/contact/application",
+            "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime.",
+            "required-by-basic-api": true},
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
+            "basic-api-field": "formName",
             "value" : "FS-2700-3b",
             "basic-api-endpoint": "/contact/application",
-            "required-by-basic-api": "Y"},
+            "required-by-basic-api": true},
           },
       },
       "temp-outfitter-fields": {
         "type": "object",
         "properties": {
+          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if orgType is individual.", "stored-in-middle-layer": true},
+          "smallBusiness" : { "type" : "boolean", "note" : "Required if orgType is not individual", "stored-in-middle-layer": true},
+          "activityDescription": { "type": "string", "stored-in-middle-layer": true, "basic-api-field": "PURPOSE", "basic-api-endpoint": "/contact/application", "required-by-basic-api": true},
+          "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete.", "stored-in-middle-layer": true},
+          "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete.", "stored-in-middle-layer": true},
+          "clientCharges": { "type": "string", "stored-in-middle-layer": true},
+          "experienceList": { "type": "string", "stored-in-middle-layer": true},
+          "guideDocumentation": {
+            "type": "file",
+            "stored-in-middle-layer": true,
+          },
+          "acknowledgementOfRiskForm": {
+            "type": "file",
+            "stored-in-middle-layer": true,
+          },
       		"insuranceCertificate": {
             "type": "file",
-            "note": "Stored in the middle layer.",
+            "stored-in-middle-layer": true,
           },
           "goodStandingEvidence": {
       			"description": "Certificate of good standing, operating agreement, or other evidence the business is in good standing",
-            "note": "Stored in the middle layer.",
+            "stored-in-middle-layer": true,
             "type": "file"
           },
           "operatingPlan": {
       			"description": "A completed Word or RTF operating plan template.",
-            "note": "Stored in the middle layer.",
+            "stored-in-middle-layer": true,
             "type": "file"
           },
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "PURPOSE", "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime."},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "CR_EXEMPT", "value" : "N"},
-          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "FORM_NAME", "value" : "FS-2700-3f"},
-         "required-by-basic-api": ["orgType","insuranceCertificate","goodStandingEvidence","operatingPlan"]
+          "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "formName", "basic-api-endpoint": "/contact/application", "value" : "FS-2700-4i", "required-by-basic-api": true},
       },
     },
     "type": "object",
@@ -127,18 +130,25 @@
       },
       "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "securityId", "note" : "Concatenation of region, forest and district code",
         "basic-api-endpoint": ["/application", "/contact-address", "/contact-phone"],
-        "required-by-basic-api": "Y"},
+        "required-by-basic-api": true},
       "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "managingOrg",
         "note" : "Concatenation of region, forest and district code",
         "basic-api-endpoint": "/application",
-        "required-by-basic-api": "Y"},
+        "required-by-basic-api": true},
       "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "adminOrg",
         "note" : "Concatenation of region, forest and district code",
         "basic-api-endpoint": "/application",
-        "required-by-basic-api": "Y"},
+        "required-by-basic-api": true},
       "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "ePermitID",
-        "note" : "Generate an ID number that starts with forest alphacode, followed by five 0s, and then an incrementing number. ",
-        "required-by-basic-api": "Y"},
-    },
-
+        "note" : "Generate an ID number that follows the following formula: Region number + Forest number + 00000 + number incrementing right ",
+        "basic-api-endpoint": "/application",
+        "required-by-basic-api": true},
+      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "acres",
+          "note" : "Value should always be 0",
+          "basic-api-endpoint": "/application",
+          "required-by-basic-api": true}         },
+      "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": { "basic-api-field": "contCN",
+          "note" : "If there is no matching contact, included in the response to the /contact/person or /contact/organization endpoint. If there is a pre-existing contact, should be contact-id field above.",
+          "basic-api-endpoint": { "enum" : ["/contact-person", "/contact-address", "/contact-phone"] },
+          "required-by-basic-api": true}         },
 }
