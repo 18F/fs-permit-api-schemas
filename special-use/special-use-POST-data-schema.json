@@ -21,7 +21,7 @@
       			"type": "integer",
       		},
           "website": { "type": "string", "note" : "Store in middle layer." },
-          "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }},
+          "orgType": { "type": { "enum": [ "Association","Corporation","Education","Federal Government","State Government","Local Govt","Married Common Property","Limited Liability Company (LLC)","Limited Liability Corporation (LLP)","Trust" ] }},
         "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState"]
       },
       "phoneNumber": {
