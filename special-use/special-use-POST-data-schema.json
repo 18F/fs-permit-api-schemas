@@ -84,8 +84,6 @@
       "region": { "type" : "integer" },
       "forest": { "type" : "integer" },
       "district": { "type" : "integer" },
-      "authorizingOfficerName": { "type" : "string"},
-      "authorizingOfficerTitle": { "type" : "string"},
       "applicant-info" : {
         "oneOf" : [
           { "$ref": "#/definitions/applicant-info" },
