@@ -20,7 +20,7 @@
       			"description": "The name of the group, company, organization or event applying",
       			"type": "integer",
       		},
-          "website": { "type": "string", "note" : "Store in middle layer." },
+          "website": { "type": "string", "stored-in-middle-layer": true },
           "orgType": { "type": { "enum": [ "Association","Corporation","Education","Federal Government","State Government","Local Govt","Married Common Property","Limited Liability Company (LLC)","Limited Liability Corporation (LLP)","Trust" ] }},
         "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState"]
       },
