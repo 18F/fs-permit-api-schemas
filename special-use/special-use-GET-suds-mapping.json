@@ -21,7 +21,7 @@
       			"description": "The name of the group, company, organization or event applying, if CONTACT_TYPE is organization",
       			"type": "integer",
       		},
-          "website": { "type": "string", "note" : "Store in middle layer." },
+          "website": { "type": "string", "stored-in-middle-layer": true },
           "orgType": { "type": { "enum": [ "Individual"  , "Corporation"  , "Limited Liability Company"  , "Partnership or Association"  , "State Government or Agency"  , "Local Government or Agency"  , "Nonprofit" ] }, "basic-api-field" : "ORG_TYPE, ORG_CODE" },
         "required": ["firstName","lastName","dayPhone","emailAddress","mailingAddress","mailingCity","mailingZIP","mailingState"]
       },
@@ -49,21 +49,35 @@
       "temp-outfitter-fields": {
         "type": "object",
         "properties": {
+          "individualIsCitizen" : { "type" : "boolean", "note" : "Required if contactType is individual."},
+          "smallBusiness" : { "type" : "boolean", "note" : "Required if contactType is not individual."},
+          "activityDescription": { "type": "string"},
+          "advertisingURL": { "type": "URL", "note" : "Either advertisingURL or advertisingDescription must be complete."},
+          "advertisingDescription": { "type": "string", "note" : "Either advertisingURL or advertisingDescription must be complete."},
+          "clientCharges": { "type": "string"},
+          "experienceList": { "type": "string"},
+          "guideDocumentation": {
+            "type": "file",
+            "stored-in-middle-layer": true,
+          },
+          "acknowledgementOfRiskForm": {
+            "type": "file",
+            "stored-in-middle-layer": true,
+          },
       		"insuranceCertificate": {
             "type": "file",
-            "note": "Stored in the middle layer.",
+            "stored-in-middle-layer": true,
           },
           "goodStandingEvidence": {
-      			"description": "Certificate of good standing, operating agreement, or other evidence the business is in good standing",
-            "note": "This file should be stored in the middle layer and retrieved (if available) with a GET request.",
+      			"description": "Required for all non-individual contact types. Certificate of good standing, operating agreement, or other evidence the business is in good standing",
+            "stored-in-middle-layer": true,
             "type": "file"
           },
           "operatingPlan": {
       			"description": "A completed Word or RTF operating plan template.",
-            "note": "This file should be stored in the middle layer and retrieved (if available) with a GET request.",
+            "stored-in-middle-layer": true,
             "type": "file"
           },
-         "required": ["insuranceCertificate","goodStandingEvidence","operatingPlan"]
       },
     },
     "type": "object",
