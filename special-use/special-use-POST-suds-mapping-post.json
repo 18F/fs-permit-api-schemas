@@ -23,7 +23,7 @@
             "basic-api-endpoint": "/contact/organization",
             "required-by-basic-api": true
       		},
-          "website": { "type": "string", "note" : "Store in middle layer." },
+          "website": { "type": "string", "stored-in-middle-layer": true },
           "orgType": {
             "type": { "enum": [ "Association","Corporation","Education","Federal Government","State Government","Local Govt","Married Common Property","Limited Liability Company (LLC)","Limited Liability Corporation (LLP)","Trust" ] },
             "basic-api-field" : "orgType",
@@ -57,11 +57,11 @@
       "non-commercial-fields": {
         "type": "object",
         "properties": {
-      		"activityDescription": { "type": "string", "note" : "Store in middle layer."},
-      		"locationDescription": {	"type": "string", "note" : "Store in middle layer."},
-          "startDateTime": { "type": "dateTime", "note" : "Store in middle layer."},
-          "endDateTime": { "type": "dateTime", "note" : "Store in middle layer." },
-          "numberParticipants" : { "type": "integer", "note" : "Store in middle layer." },
+      		"activityDescription": { "type": "string", "stored-in-middle-layer": true},
+      		"locationDescription": {	"type": "string", "stored-in-middle-layer": true},
+          "startDateTime": { "type": "dateTime", "stored-in-middle-layer": true},
+          "endDateTime": { "type": "dateTime", "stored-in-middle-layer": true },
+          "numberParticipants" : { "type": "integer", "stored-in-middle-layer": true },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "purpose",
             "basic-api-endpoint": "/contact/application",
@@ -111,9 +111,9 @@
     },
     "type": "object",
     "properties": {
-      "region": { "type" : "integer", "note" : "Store in middle layer."},
-      "forest": { "type" : "integer", "note" : "Store in middle layer." },
-      "district": { "type" : "integer", "note" : "Store in middle layer."},
+      "region": { "type" : "integer", "stored-in-middle-layer": true},
+      "forest": { "type" : "integer", "stored-in-middle-layer": true },
+      "district": { "type" : "integer", "stored-in-middle-layer": true},
       "applicant-info" : {
         "oneOf" : [
           { "$ref": "#/definitions/applicant-info" },
