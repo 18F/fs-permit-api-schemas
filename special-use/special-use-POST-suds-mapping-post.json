@@ -123,7 +123,7 @@
           { "contact-id": { "type" : "integer" , "basic-api-field" : "contCN" } }
         ]
       },
-      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"],
+      "type" : { "enum" : ["non-commercial","tempOutfitters"],
         "note" : "See the FORM_NAME fields in the blocks specific to each permit type. Will not be passed directly to basic api."},
       "type-specific-fields": {
         "oneOf": [
