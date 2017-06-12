@@ -46,7 +46,7 @@
           "areaCode": { "type": "integer", "basic-api-field": "areaCode", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": true},
           "number": { "type": "integer", "basic-api-field": "phoneNumber", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": true},
           "extension": { "type": "integer", "basic-api-field": "extension", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": false},
-          "type": {
+          "phoneType": {
             "basic-api-field" : "phoneNumber",
             "note" : "We should limit responses to a few options, even though SUDS does not.",
             "basic-api-endpoint": "/contact-phone",
@@ -111,9 +111,11 @@
     },
     "type": "object",
     "properties": {
-      "region": { "type" : "integer", "stored-in-middle-layer": true},
-      "forest": { "type" : "integer", "stored-in-middle-layer": true },
-      "district": { "type" : "integer", "stored-in-middle-layer": true},
+      "region": { "type" : "string", "stored-in-middle-layer": true},
+      "forest": { "type" : "string", "stored-in-middle-layer": true },
+      "district": { "type" : "string", "stored-in-middle-layer": true},
+      "authorizingOfficerName": { "type" : "string", "stored-in-middle-layer": true},
+      "authorizingOfficerTitle": { "type" : "string", "stored-in-middle-layer": true},
       "applicant-info" : {
         "oneOf" : [
           { "$ref": "#/definitions/applicant-info" },
