@@ -30,7 +30,7 @@
           "areaCode": { "type": "integer"},
           "number": { "type": "integer"},
           "extension": { "type": "integer"},
-          "type": { "basic-api-field" : "PHONE_NUMBER_TYPE", "note" : "We should limit responses to a few options."},
+          "phoneType": { "basic-api-field" : "PHONE_NUMBER_TYPE", "note" : "We should limit responses to a few options."},
         },
         "required": ["areaCode","number","type"]
       },
@@ -42,6 +42,7 @@
           "startDateTime": { "type": "dateTime"},
           "endDateTime": { "type": "dateTime" },
           "numberParticipants" : { "type": "integer" },
+          "numberSpectators" : { "type": "integer" },
           },
       },
       "temp-outfitter-fields": {
@@ -81,16 +82,16 @@
     },
     "type": "object",
     "properties": {
-      "region": { "type" : "integer" },
-      "forest": { "type" : "integer" },
-      "district": { "type" : "integer" },
+      "region": { "type" : "string" },
+      "forest": { "type" : "string" },
+      "district": { "type" : "string" },
       "applicant-info" : {
         "oneOf" : [
           { "$ref": "#/definitions/applicant-info" },
           { "contact-id": { "type" : "integer" } }
         ]
       },
-      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"], "note" : "See the FORM_NAME fields in the blocks specific to each permit type"},
+      "type" : { "enum" : ["non-commercial","tempOutfitters"], "note" : "See the FORM_NAME fields in the blocks specific to each permit type"},
       "type-specific-fields": {
         "oneOf": [
           { "$ref": "#/definitions/non-commercial-fields" },
