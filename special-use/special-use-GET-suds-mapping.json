@@ -89,7 +89,7 @@
       "authorizingOfficerName": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_NAME"},
       "authorizingOfficerTitle": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_TITLE"},
       "applicant-info" : { "$ref": "#/definitions/applicant-info" } },
-      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"], "note" : "See the FORM_NAME fields in the blocks specific to each permit type"},
+      "type" : { "enum" : ["noncommercial","tempOutfitters"], "note" : "See the FORM_NAME fields in the blocks specific to each permit type"},
       "type-specific-fields": {
         "oneOf": [
           { "$ref": "#/definitions/non-commercial-fields" },
