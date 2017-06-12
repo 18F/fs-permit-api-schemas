@@ -62,10 +62,11 @@
           "startDateTime": { "type": "dateTime", "stored-in-middle-layer": true},
           "endDateTime": { "type": "dateTime", "stored-in-middle-layer": true },
           "numberParticipants" : { "type": "integer", "stored-in-middle-layer": true },
+          "numberSpectators" : { "type": "integer", "stored-in-middle-layer": true },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "purpose",
             "basic-api-endpoint": "/contact/application",
-            "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime.",
+            "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime, numberParticipants, numberSpectators",
             "required-by-basic-api": true},
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "formName",
