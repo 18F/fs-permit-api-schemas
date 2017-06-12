@@ -31,7 +31,7 @@
           "areaCode": { "type": "integer", "basic-api-field": "AREA_CODE"},
           "number": { "type": "integer", "basic-api-field": "PHONE_NUMBER"},
           "extension": { "type": "integer", "basic-api-field": "EXTENSION"},
-          "type": { "basic-api-field" : "PHONE_NUMBER_TYPE", "note" : "We should limit responses to a few options, even though SUDS does not."},
+          "phoneType": { "basic-api-field" : "PHONE_NUMBER_TYPE", "note" : "We should limit responses to a few options, even though SUDS does not."},
         },
         "required": ["areaCode","number","type"]
       },
