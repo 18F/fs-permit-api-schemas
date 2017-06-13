@@ -31,7 +31,7 @@
           "areaCode": { "type": "integer", "basic-api-field": "AREA_CODE"},
           "number": { "type": "integer", "basic-api-field": "PHONE_NUMBER"},
           "extension": { "type": "integer", "basic-api-field": "EXTENSION"},
-          "type": { "basic-api-field" : "PHONE_NUMBER_TYPE", "note" : "We should limit responses to a few options, even though SUDS does not."},
+          "phoneType": { "basic-api-field" : "PHONE_NUMBER_TYPE", "note" : "We should limit responses to a few options, even though SUDS does not."},
         },
         "required": ["areaCode","number","type"]
       },
@@ -43,6 +43,7 @@
           "startDateTime": { "type": "dateTime", "note": "Retrieved from the middle layer."},
           "endDateTime": { "type": "dateTime", "note": "Retrieved from the middle layer." },
           "numberParticipants" : { "type": "integer",  "note": "Retrieved from the middle layer." },
+          "numberSpectators" : { "type": "integer",  "note": "Retrieved from the middle layer." },
           },
         "required": ["purpose"]
       },
@@ -83,13 +84,13 @@
     "type": "object",
     "properties": {
       "controlNumber": { "type" : "integer", "basic-api-field" : "ACCINST_CN"},
-      "region": { "type" : "integer", "basic-api-field" : "CONT_ID", "note" : "Derived from the first and second digit"},
-      "forest": { "type" : "integer", "basic-api-field" : "CONT_ID", "note" : "Derived from the third and fourth digit"},
-      "district": { "type" : "integer", "basic-api-field" : "CONT_ID", "note" : "Derived from the fifth and sixth digit" },
+      "region": { "type" : "string", "basic-api-field" : "CONT_ID", "note" : "Derived from the first and second digit"},
+      "forest": { "type" : "string", "basic-api-field" : "CONT_ID", "note" : "Derived from the third and fourth digit"},
+      "district": { "type" : "string", "basic-api-field" : "CONT_ID", "note" : "Derived from the fifth and sixth digit" },
       "authorizingOfficerName": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_NAME"},
       "authorizingOfficerTitle": { "type" : "string" , "basic-api-field" : "AUTH_OFFICER_TITLE"},
       "applicant-info" : { "$ref": "#/definitions/applicant-info" } },
-      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"], "note" : "See the FORM_NAME fields in the blocks specific to each permit type"},
+      "type" : { "enum" : ["noncommercial","tempOutfitters"], "note" : "See the FORM_NAME fields in the blocks specific to each permit type"},
       "type-specific-fields": {
         "oneOf": [
           { "$ref": "#/definitions/non-commercial-fields" },

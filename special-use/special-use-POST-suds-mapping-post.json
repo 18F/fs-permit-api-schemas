@@ -46,7 +46,7 @@
           "areaCode": { "type": "integer", "basic-api-field": "areaCode", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": true},
           "number": { "type": "integer", "basic-api-field": "phoneNumber", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": true},
           "extension": { "type": "integer", "basic-api-field": "extension", "basic-api-endpoint": "/contact-phone", "required-by-basic-api": false},
-          "type": {
+          "phoneType": {
             "basic-api-field" : "phoneNumber",
             "note" : "We should limit responses to a few options, even though SUDS does not.",
             "basic-api-endpoint": "/contact-phone",
@@ -62,10 +62,11 @@
           "startDateTime": { "type": "dateTime", "stored-in-middle-layer": true},
           "endDateTime": { "type": "dateTime", "stored-in-middle-layer": true },
           "numberParticipants" : { "type": "integer", "stored-in-middle-layer": true },
+          "numberSpectators" : { "type": "integer", "stored-in-middle-layer": true },
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "purpose",
             "basic-api-endpoint": "/contact/application",
-            "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime.",
+            "note" : "This field should be a concatenation of activityDescription, locationDescription, startDateTime, endDateTime, numberParticipants, numberSpectators",
             "required-by-basic-api": true},
           "AUTOPOPULATED_BY_MIDDLEWARE_NOT_INTAKE_MODULE": {
             "basic-api-field": "formName",
@@ -111,16 +112,18 @@
     },
     "type": "object",
     "properties": {
-      "region": { "type" : "integer", "stored-in-middle-layer": true},
-      "forest": { "type" : "integer", "stored-in-middle-layer": true },
-      "district": { "type" : "integer", "stored-in-middle-layer": true},
+      "region": { "type" : "string", "stored-in-middle-layer": true},
+      "forest": { "type" : "string", "stored-in-middle-layer": true },
+      "district": { "type" : "string", "stored-in-middle-layer": true},
+      "authorizingOfficerName": { "type" : "string", "stored-in-middle-layer": true},
+      "authorizingOfficerTitle": { "type" : "string", "stored-in-middle-layer": true},
       "applicant-info" : {
         "oneOf" : [
           { "$ref": "#/definitions/applicant-info" },
           { "contact-id": { "type" : "integer" , "basic-api-field" : "contCN" } }
         ]
       },
-      "type" : { "enum" : ["non-commercial","temp-outfitter-guide"],
+      "type" : { "enum" : ["non-commercial","tempOutfitters"],
         "note" : "See the FORM_NAME fields in the blocks specific to each permit type. Will not be passed directly to basic api."},
       "type-specific-fields": {
         "oneOf": [
